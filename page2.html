@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Never Leaving ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .gradient-bg {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(120deg, #ff4b2b, #ff416c, #4b6cb7, #182848);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page2-container {
+      min-height: 200vh;
+      padding: 2rem 1rem;
+    }
+
+    .glass-card {
+      position: sticky;
+      top: 2rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 3rem 2.5rem;
+      border-radius: 24px;
+      max-width: 420px;
+      width: 90%;
+      margin: 0 auto 4rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+      transform: scale(0.7);
+      animation: glassPopup 0.8s ease forwards;
+      z-index: 10;
+      text-align: center;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.7s;
+    }
+
+    .glass-card:hover::before {
+      left: 100%;
+    }
+
+    @keyframes glassPopup {
+      to { transform: scale(1); }
+    }
+
+    .glass-card h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #ff6b9d, #c44569);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+
+    .glass-card h2 {
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, #ff9a9e, #fecfef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+
+    .love-note {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+    }
+
+    .messages-section {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .message-card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: white;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .message-card .title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ff9a9e;
+      font-weight: 600;
+    }
+
+    .memories-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .memory-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+      color: white;
+    }
+
+    .memory-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .memory-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .memory-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.8rem;
+      animation: heartFall linear forwards;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    @keyframes heartFall {
+      0% { transform: translateY(-10vh) rotate(0deg) scale(0); opacity: 1; }
+      50% { transform: translateY(30vh) rotate(180deg) scale(1.2); }
+      100% { transform: translateY(120vh) rotate(360deg) scale(0); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .page2-container { padding: 1rem; }
+      .glass-card { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+    }
+  </style>
+</head><!-- SIMPLE MUSIC BUTTON (top-right) -->
+<button onclick="toggleMusic()" id="musicBtn" style="
+  position:fixed; top:20px; right:20px; z-index:1000;
+  background:rgba(255,255,255,0.3); border:none; 
+  border-radius:50px; padding:12px 20px; color:white; 
+  font-size:16px; cursor:pointer; backdrop-filter:blur(10px);
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+">🎵 Play Birthday Song</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let isPlaying = false;
+function toggleMusic() {
+  const music = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  
+  if (isPlaying) {
+    music.pause();
+    btn.textContent = '🎵 Play Birthday Song';
+    isPlaying = false;
+  } else {
+    music.volume = 0.2;
+    music.play();
+    btn.textContent = '🔇 Stop Music';
+    isPlaying = true;
+  }
+}
+</script>
+<body>
+  
+  <div class="gradient-bg"></div>
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <div class="page2-container">
+    <!-- Sticky glass card -->
+    <div class="glass-card">
+      <h1>Yes! ️</h1>
+      <p class="love-note">️I'll always be there to tease you</p>
+    </div>
+
+    <!-- Your custom birthday message -->
+    <div class="messages-section">
+      <div class="message-card">
+        <div class="title">For My Bhosdiwala 🫂</div>
+        <p>
+Happy Birthday bhosdiwale 🫂<br>
+I wish in your upcoming years you would be as happy as was in start of 2025☺️,<br>
+Hope you achieve your dreams and get the best you deserve 🧿<br>
+As always I'll pray for you and your madam ji😉<br>
+And hope you never find a replacement of mine 🙂
+        </p>
+      </div>
+    </div>
+
+    <!-- 4 REAL IMAGES GALLERY -->
+    <div class="memories-gallery">
+      <div class="memory-item">
+        <img src="IMG-20241118-WA0093.jpg" class="memory-image" alt="Memory 1 💕">
+        <h4>The og one </h4>
+        <p>Our captured memory 🥰</p>
+      </div>
+
+      <div class="memory-item">
+        <img src="Snapchat-267424610.jpg" class="memory-image" alt="Memory 2 ✨">
+        <h4>Special Moment 2</h4>
+        <p>Snapchat vibes forever 📸</p>
+      </div>
+
+      <div class="memory-item">
+        <img src="Snapchat-969309771.Jpg" class="memory-image" alt="Memory 3 💖">
+        <h4>The one from 3rd sem</h4>
+        <p>More memories unlocked! 😍</p>
+      </div>
+
+      <div class="memory-item">
+        <img src="IMG_20251016_104519574_HDR.jpg" class="memory-image" alt="Memory 4 🌟">
+        <p>Our final treasure forever ❤️</p>
+<!-- 3D FLIP MEMORY CARDS -->
+<div class="memories-gallery">
+  <!-- your 4 cards -->
+</div>
+
+<!-- 👇 ADD FINAL MESSAGE HERE 👇 -->
+<div style="...">Enjoy your special day ☺️🧿 love you bro 🤗</div>
+
+</div> <!-- page2-container ends -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      
+      const startLeft = Math.random() * 100;
+      const duration = 4 + Math.random() * 2;
+      const size = 1.2 + Math.random() * 1.2;
+      
+      heart.style.left = startLeft + "vw";
+      heart.style.fontSize = size + "rem";
+      heart.style.animationDuration = duration + "s";
+      
+      document.getElementById("heartsContainer").appendChild(heart);
+      setTimeout(() => heart.remove(), duration * 1000 + 1000);
+    }
+
+    setInterval(createHeart, 300);
+    for (let i = 0; i < 30; i++) {
+      setTimeout(createHeart, i * 100);
+    }
+  </script>
+</body>
+</html>

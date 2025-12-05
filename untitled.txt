@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="gradient-bg"></div>
+
+  <div class="container">
+    <h1 id="birthdayText">Happy Birthday My Bokachoda</h1>
+    <p class="hint">(click the text 👆)</p>
+
+    <div id="emojiContainer"></div>
+
+    <div class="login-box">
+      <h2>Sign In</h2>
+      <form id="loginForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password (lowercase only)" required />
+
+        <button type="submit">Sign In</button>
+      </form>
+
+      <button id="forgotBtn" class="link-btn">Forgot password?</button>
+
+      <div id="questionBox" class="question-box hidden">
+        <p class="question">Question: The day you thought of leaving Arav</p>
+        <p class="note">Hint: password must be all lowercase.</p>
+      </div>
+
+      <p id="message" class="message"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
